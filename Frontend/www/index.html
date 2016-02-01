@@ -16,7 +16,19 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container col-sm-6 col-md-8 col-lg-9">
+    <div id="header" class="navbar navbar-inverse col-sm-6 col-md-8 col-lg-9">
+        <span id="logo" class="label label-warning">Pizza KMA</span>
+        <span>
+            <span id="info" class="col-sm-6 col-md-8  col-lg-9">
+                <span id="number">(044) 222 2 222</span>
+                <span id="hours">24 години/7 днів на тиждень</span>
+                <span id="free">Безкоштовна доставка</span>
+                <button id="exit" class="btn btn-warning btn-sm">Вийти</button>
+            </span>
+            <span id="pizza-white">Піцца</span>
+        </span>
+    </div>
     <div class="row">
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail pizza-card">
@@ -25,10 +37,18 @@
                 <div class="caption"><h3>Thumbnail label</h3>
 
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
                     <p>
-                        <a href="#" class="btn btn-primary">Button 2</a>
-                        <a href="#" class="btn btn-default">Button 1</a>
+                        <span><img scr="assets/images/size-icon.svg" class="small-pizza">30</span>
+                        <span><img scr="assets/images/size-icon.svg" class="big-pizza">40</span>
+                    </p>
+                    <p>
+                        <span><img scr="assets/images/weight.svg" class="small-pizza">370</span>
+                        <span><img scr="assets/images/weight.svg" class="big-pizza">660</span>
+                    </p>
+                    <p> <span class="small-pizza">грн.</span><span class="big-pizza">грн.</span></p>
+                    <p>
+                        <a href="#" class="btn btn-warning small-pizza">Button 1</a>
+                        <a href="#" class="btn btn-warning big-pizza">Button 2</a>
                     </p>
                 </div>
             </div>
@@ -43,8 +63,8 @@
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
                     <p>
-                        <a href="#" class="btn btn-primary">Button 3</a>
-                        <a href="#" class="btn btn-default">Button 4</a>
+                        <a href="#" class="btn btn-warning btn-small-pizza">Button 3</a>
+                        <a href="#" class="btn btn-warning btn-big-pizza">Button 4</a>
                     </p>
                 </div>
             </div>
@@ -59,15 +79,26 @@
                     <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
 
                     <p>
-                        <a href="#" class="btn btn-primary">Button 5</a>
-                        <a href="#" class="btn btn-default">Button 6</a>
+                        <a href="#" class="btn btn-warning btn-small-pizza">Button 5</a>
+                        <a href="#" class="btn btn-warning btn-big-pizza">Button 6</a>
                     </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+<div id="order" class="col-sm-6 col-md-4 col-lg-3">
+    <div class="order-header">Замовлення
+        <span id="order-amount">3</span>
+        <button id="order-reset" class="btn btn-link">Очистити замовлення</button>
+    </div>
+    <div id="pizzas">
+        <div class="pizza-ordered">
+            <span class="name-pizza">BBQ (Мала)</span>
+            <span class="options"></span>
+        </div>
+    </div>
+</div>
 <!-- jQuery JavaScript -->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
 
