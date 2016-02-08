@@ -1,54 +1,111 @@
-
+@logo-width: 100px;
+@logo-height: 110px;
+@down-logo-height: 160px;
+@darker-color: #d16200;
 
 #header {
   z-index: 1;
   position: fixed;
   top: 0px;
   left: 0px;
-  height: 10%;
+  width: 100%;
+ // height: 13%;
   color: white;
   background-color: black;
   opacity: 0.7;
   border-radius: 0px;
 }
+
+.down-row {
+  display: block!important;
+  font-size: 16px;
+}
 #pizza-white {
   display: block;
-
+  margin-left: 120px;
 }
 #logo {
   //height:inherit;
-  width: 70px;
-  height: 70px;
+  position: fixed;
+  left: 10px;
+  top: 0px;
+  width: @logo-width;
+  height: @logo-height;
   opacity: 10;
-  float:left;
-  margin-left: 10px;
+  //float:left;
   display: inline-block;
+  border: 1px solid @darker-color;
+  border-bottom: none;
+  padding: 10px;
   text-align: center;
-  font-size: medium;
+  font-size: 21px;
+  text-decoration: none;
+  background-image: url('../images/pizza_kma_logo.png');
+  z-index: 5;
+
+}
+.down-logo {
+  color: white;
+  opacity: 0.7;
+  position: fixed;
+  left: 10px;
+  bottom: 0px;
+  width: @logo-width;
+  height: @down-logo-height;
+  z-index:2;
+  display: inline-block;
+  border: 1px solid @darker-color;
+  border-top: none;
+  padding: 10px;
+  text-align: center;
+  font-size: 21px;
+  text-decoration: none;
+  background-image: url('../images/discount_logo_min.png');
+
+  .word-with-border {
+    border-bottom: 1px dotted @darker-color;
+  }
+
 }
 #exit {
   float: right;
   opacity: 1;
   margin-top: 0px;
 }
+.top-row{
+  width: 100%;
+  line-height: 11px;
+ }
 #info {
   display: block;
-  width: 70%;
-  height:40%;
   border: none;
+  padding-left: 120px;
+  padding-right: 340px;
+  margin-top: 10px;
   //margin-bottom:0px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid grey;
+  color: grey;
 }
 #number {
-  font-size: large;
+  font-size: 20px;
   margin-left: 0px;
   margin-right: 5px;
+  padding-right: 25px;
+  padding-bottom: 0px;
 }
 #hours {
-  font-size: small;
+  font-size: 12px;
   margin-right: 5px;
+  padding-right: 25px;
+  padding-bottom: 0px;
 }
 #free {
-  font-size: medium;
-  margin-right:40%;
+  font-size: 16px;
+  margin-right: 5px;
+  padding-right: 25px;
+  padding-bottom: 0px;
+}
+.down {
+  position: inherit;
+  padding-top: 20px;
 }

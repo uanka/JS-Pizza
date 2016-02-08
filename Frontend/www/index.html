@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- LESS основний файл -->
-    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less" />
+    <link rel="stylesheet/less" type="text/css" href="assets/less/main.less"/>
     <!-- LESS JavaScript компілятор -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/less.js/2.5.3/less.min.js"></script>
 
@@ -16,96 +16,211 @@
 </head>
 <body>
 
-<div class="container col-sm-6 col-md-8 col-lg-9">
-    <div id="header" class="navbar navbar-inverse col-sm-6 col-md-8 col-lg-9">
-        <span id="logo" class="label label-warning">Pizza KMA</span>
-        <span>
-            <span id="info" class="col-sm-6 col-md-8  col-lg-9">
-                <span id="number">(044) 222 2 222</span>
-                <span id="hours">24 години/7 днів на тиждень</span>
-                <span id="free">Безкоштовна доставка</span>
-                <button id="exit" class="btn btn-warning btn-sm">Вийти</button>
-            </span>
-            <span id="pizza-white">Піцца</span>
-        </span>
+<!--<div class="container col-sm-6 col-md-8 col-lg-9">-->
+
+<div id="header" class="navbar navbar-inverse">
+    <div id="logo">
+        <a class="logo-up" href="#">
+        </a>
     </div>
+    <div id="info" class="top-row col-sm-6 col-md-8  col-lg-9">
+        <div id="number"
+             class=" visible-xs-inline-block visible-sm-inline-block visible-lg-inline-block visible-md-inline-block">
+            (044) 222 2 222
+        </div>
+        <div id="hours" class="visible-lg-inline-block visible-md-inline-block ">24 години/7 днів на тиждень</div>
+        <div id="free" class="visible-lg-inline-block">Безкоштовна доставка</div>
+        <button id="exit" class="btn btn-warning btn-sm">Ввійти</button>
+    </div>
+    <div class="down-row">
+        <span id="pizza-white">Піцца</span>
+    </div>
+</div>
+<a class="down-logo" href="#">
+    <div class="down">
+        <div class="word">ЦЬОГО</div>
+        <div class="word">ТИЖНЯ</div>
+        <div class="word word-with-border">НА ВСЕ</div>
+    </div>
+</a>
+<div class="container-fluid page">
     <div class="row">
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_1.jpg">
+        <div class="main-pizzas">
+            <div id="all-pizzas-words">
+                <h2 class="words-allp">Усі піци
+                    <span class="badge">8</span></h2>
+            </div>
+            <div class="filters">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#">Усі</a></li>
+                    <li><a href="#">М'ясні</a></li>
+                    <li><a href="#">З ананасами</a></li>
+                    <li><a href="#">З грибами</a></li>
+                    <li><a href="#">З морепродуктами</a></li>
+                    <li><a href="#">Вега</a></li>
+                </ul>
+            </div>
+            <div class="row list-pizzas">
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail pizza-card">
+                        <img src="assets/images/pizza_1.jpg">
+                        <div class="caption"><h3>Thumbnail label</h3>
+                            <div class="type">М'ясна піца</div>
+                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                id elit non mi porta gravida
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 small-pizza">
+                                    <div>
+                                        <img  class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image" src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">99</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning btn-sm-pizza">Купити</a>
+                                </div>
+                                <div class="col-sm-6 big-pizza">
+                                    <div>
+                                        <img  class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image" src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">169</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning btn-big-pizza">Купити</a>
+                                </div>
+                            </div>
 
-                <div class="caption"><h3>Thumbnail label</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail pizza-card">
+                        <img src="assets/images/pizza_2.jpg">
+                        <div class="caption"><h3>Thumbnail label</h3>
+                            <div class="type">М'ясна піца</div>
+                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                id elit non mi porta
+                                gravida
+                            </div>
 
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                    <p>
-                        <span><img scr="assets/images/size-icon.svg" class="small-pizza">30</span>
-                        <span><img scr="assets/images/size-icon.svg" class="big-pizza">40</span>
-                    </p>
-                    <p>
-                        <span><img scr="assets/images/weight.svg" class="small-pizza">370</span>
-                        <span><img scr="assets/images/weight.svg" class="big-pizza">660</span>
-                    </p>
-                    <p> <span class="small-pizza">грн.</span><span class="big-pizza">грн.</span></p>
-                    <p>
-                        <a href="#" class="btn btn-warning small-pizza">Button 1</a>
-                        <a href="#" class="btn btn-warning big-pizza">Button 2</a>
-                    </p>
+                            <div class="row">
+                                <div class="col-sm-6 small-pizza">
+                                    <div>
+                                        <img  class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image" src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">99</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning">Купити</a>
+                                </div>
+                                <div class="col-sm-6 big-pizza">
+                                    <div>
+                                        <img class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image"   src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">169</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning">Купити</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4">
+                    <div class="thumbnail pizza-card">
+                        <img src="assets/images/pizza_3.jpg">
+                        <div class="caption"><h3>Thumbnail label</h3>
+                            <div class="type">М'ясна піца</div>
+                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
+                                id elit non mi porta
+                                gravida
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6 small-pizza">
+                                    <div>
+                                        <img  class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image" src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">99</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning">Купити</a>
+                                </div>
+                                <div class="col-sm-6 big-pizza">
+                                    <div>
+                                        <img  class="image" src="assets/images/size-icon.svg">
+                                        <span class="diam">40</span>
+                                    </div>
+                                    <div>
+                                        <img  class="image" src="assets/images/weight.svg">
+                                        <span class="weight">660</span>
+                                    </div>
+                                    <h3 class="costs">169</h3>
+                                    <div class="uah">грн.</div>
+                                    <a href="#" class="btn btn-warning">Купити</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_2.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-warning btn-small-pizza">Button 3</a>
-                        <a href="#" class="btn btn-warning btn-big-pizza">Button 4</a>
-                    </p>
+        <div id="order">
+            <div class="order-header">
+                <span class="order-title-header">Замовлення</span>
+                <span class="badge order-amount">0</span>
+                <button id="order-reset" class="btn btn-link">Очистити замовлення</button>
+            </div>
+            <div id="basket">
+                <div class="empty-cart">
+                    <div id="cat"></div>
+                    Зголодніли?<br>Саме час замовити піцу!
                 </div>
             </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4">
-            <div class="thumbnail pizza-card">
-                <img src="assets/images/pizza_3.jpg">
-
-                <div class="caption"><h3>Thumbnail label</h3>
-
-                    <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-
-                    <p>
-                        <a href="#" class="btn btn-warning btn-small-pizza">Button 5</a>
-                        <a href="#" class="btn btn-warning btn-big-pizza">Button 6</a>
-                    </p>
+            <div class="bottom-order">
+                <div class="order-cost">
+                    Сума замовлення
+                    <span class="money">0</span>
+                    грн.
                 </div>
+                <button class="btn btn-warning btn-lg btn-block to-buy">Замовити</button>
             </div>
         </div>
     </div>
 </div>
-<div id="order" class="col-sm-6 col-md-4 col-lg-3">
-    <div class="order-header">Замовлення
-        <span id="order-amount">3</span>
-        <button id="order-reset" class="btn btn-link">Очистити замовлення</button>
-    </div>
-    <div id="pizzas">
-        <div class="pizza-ordered">
-            <span class="name-pizza">BBQ (Мала)</span>
-            <span class="options"></span>
-        </div>
-    </div>
-</div>
+<footer class="footer">
+    <p>Pizza.22 - практичний проект в межах курсу JavaScript в Києво-Могилянській Академії</p>
+    <p>
+        Доставка піци не здійснюється
+    </p>
+</footer>
 <!-- jQuery JavaScript -->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <!--Bootsrap JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!--Own JavaScript -->
-<script type="text/javascript"  src="assets/js/main.js"> </script>
+<script type="text/javascript" src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,5 +1,36 @@
-@mainColor: orange;
+@mainColor: #ea862e;
 
 @import "pizza/pizza-card";
 @import "pizza/header";
 @import "pizza/order";
+
+.page {
+  padding-top: 90px;
+
+}
+.main-pizzas {
+  padding-right: 360px;
+  padding-left: 20px;
+  max-width: 1354px;
+  margin: auto;
+}
+.words-allp {
+  padding-left: 50%;
+}
+.badge {
+  background-color:@mainColor;
+}
+.filters {
+  text-align: center;
+  margin-left: 200px;
+}
+.nav-pills {
+  li a{
+    color: @mainColor;
+  }
+  li.active a, li.active a:hover, li.active a:focus {
+      color: white;
+      background-color: @mainColor;
+  }
+
+}
