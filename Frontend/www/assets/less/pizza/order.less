@@ -1,4 +1,5 @@
-
+@pizza-size: 90px;
+@btn-size: 30px;
 
 #order {
   z-index:2;
@@ -13,8 +14,9 @@
   padding-top: 20px;
 }
 .order-header{
+  padding: 7px;
   .order-title-header {
-    margin-left: 10px;
+   // margin-left: 10px;
     font-size: 20px;
     font-weight: 700;
   }
@@ -29,26 +31,67 @@
   right:5px;
   width: 270px;
   margin: auto;
+  margin-bottom: 10px;
 }
 #basket {
-  background-color: #dddddd;
-  height: 82%;
+  background-color: rgba(237, 238, 191, 0.79);
+  height: 80%;
   overflow-x: hidden;
   overflow-y: auto;
   z-index: 8;
 }
 .empty-cart {
-  #cat {
-    padding-top:400px;
-    background-image: url('../images/cat.svg');
-    background-repeat: no-repeat;
-    background-size: 30%;
-    background-position: center;
-    z-index: 10;
-  }
+  //# {
+  //  padding-top:400px;
+  //  background-image: url('../images/');
+  //  background-repeat: no-repeat;
+  //  background-size: 30%;
+  //  background-position: center;
+  //  z-index: 10;
+  //}
   color: grey;
   text-align: center;
 }
+.empty-cart.hidden {
+  display: none;
+}
+.order-item {
+  padding-left: 20px;
+  padding-top: 10px;
+  height: 110px;
+  border: none;
+  border-bottom: 1px solid grey;
+  padding-bottom: 0px;
+  .order-item-name {
+    color: @mainColor;
+    font-weight: 500;
+    font-size: 20px;
+  }
+  .img-pizza-in-basket {
+    height: @pizza-size;
+    width: @pizza-size;
+    margin-right: -(@pizza-size /2);
+    overflow-x: hidden;
+    float: right;
+    border-radius: 100%;
+  }
+  .item-cost {
+    font-weight: bold;
+  }
+  .btn {
+    border-radius: 100%;
+    width: @btn-size;
+    height: @btn-size;
+    text-align: center;
+    padding: 0px 3px 0px 3px;
+  }
+  .btn-default {
+    oolor: @mainColor;
+    float: right;
+  }
+
+}
+
 .bottom-order {
   background-color: inherit;
   z-index: 18;

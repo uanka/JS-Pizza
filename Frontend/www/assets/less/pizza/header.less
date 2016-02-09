@@ -31,7 +31,7 @@
   top: 0px;
   width: @logo-width;
   height: @logo-height;
-  opacity: 10;
+  opacity: 1;
   //float:left;
   display: inline-block;
   border: 1px solid @darker-color;
@@ -41,7 +41,7 @@
   font-size: 21px;
   text-decoration: none;
   background-image: url('../images/pizza_kma_logo.png');
-  z-index: 5;
+  z-index: 10;
 
 }
 .down-logo {
@@ -67,6 +67,11 @@
   }
 
 }
+.down-logo:hover, #logo:hover {
+  opacity: 1;
+  color: white;
+}
+
 #exit {
   float: right;
   opacity: 1;

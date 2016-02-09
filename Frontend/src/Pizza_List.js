@@ -4,7 +4,7 @@
 
 var pizza_info = [
     {
-        id:1,
+        id:7,
         icon:'assets/images/pizza_7.jpg',
         title: "Імпреза",
         type: 'М’ясна піца',
@@ -53,7 +53,7 @@ var pizza_info = [
         is_popular:true
     },
     {
-        id:3,
+        id:1,
         icon:'assets/images/pizza_1.jpg',
         title: "Міксовий поло",
         type: 'М’ясна піца',
@@ -75,7 +75,7 @@ var pizza_info = [
         }
     },
     {
-        id:4,
+        id:5,
         icon:'assets/images/pizza_5.jpg',
         title: "Сициліано",
         type: 'М’ясна піца',
@@ -97,7 +97,7 @@ var pizza_info = [
         }
     },
     {
-        id:17,
+        id:3,
         icon:'assets/images/pizza_3.jpg',
         title: "Маргарита",
         type: 'Вега піца',
@@ -113,7 +113,28 @@ var pizza_info = [
         }
     },
     {
-        id:43,
+        id:4,
+        icon:'assets/images/pizza_4.jpg',
+        title: "Россо Густо",
+        type: 'Морська піца',
+        content: {
+            ocean: ['ікра червона', 'лосось копчений'],
+            cheese: ['сир моцарелла'],
+            additional: ['оливкова олія', 'вершки']
+        },
+        small_size:{
+            weight: 400,
+            size: 30,
+            price: 189
+        },
+        big_size:{
+            weight: 700,
+            size: 40,
+            price: 299
+        }
+    },
+    {
+        id:6,
         icon:'assets/images/pizza_6.jpg',
         title: "Мікс смаків",
         type: 'М’ясна піца',
@@ -136,7 +157,7 @@ var pizza_info = [
         }
     },
     {
-        id:90,
+        id:8,
         icon:'assets/images/pizza_8.jpg',
         title: "Дольче Маре",
         type: 'Морська піца',
@@ -150,28 +171,8 @@ var pizza_info = [
             size: 40,
             price: 399
         }
-    },
-    {
-        id:6,
-        icon:'assets/images/pizza_4.jpg',
-        title: "Россо Густо",
-        type: 'Морська піца',
-        content: {
-            ocean: ['ікра червона', 'лосось копчений'],
-            cheese: ['сир моцарелла'],
-            additional: ['оливкова олія', 'вершки']
-        },
-        small_size:{
-            weight: 400,
-            size: 30,
-            price: 189
-        },
-        big_size:{
-            weight: 700,
-            size: 40,
-            price: 299
-        }
     }
+
 ];
 
 module.exports = pizza_info;

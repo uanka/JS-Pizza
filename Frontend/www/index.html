@@ -19,8 +19,8 @@
 <!--<div class="container col-sm-6 col-md-8 col-lg-9">-->
 
 <div id="header" class="navbar navbar-inverse">
-    <div id="logo">
-        <a class="logo-up" href="#">
+    <div>
+        <a  id="logo" class="logo-up" href="#">
         </a>
     </div>
     <div id="info" class="top-row col-sm-6 col-md-8  col-lg-9">
@@ -48,143 +48,21 @@
         <div class="main-pizzas">
             <div id="all-pizzas-words">
                 <h2 class="words-allp">Усі піци
-                    <span class="badge">8</span></h2>
+                    <span class="badge badge-all">8</span></h2>
             </div>
             <div class="filters">
                 <ul class="nav nav-pills">
-                    <li class="active"><a href="#">Усі</a></li>
-                    <li><a href="#">М'ясні</a></li>
-                    <li><a href="#">З ананасами</a></li>
-                    <li><a href="#">З грибами</a></li>
-                    <li><a href="#">З морепродуктами</a></li>
-                    <li><a href="#">Вега</a></li>
+                    <li id="all" class="active"><a href="#">Усі</a></li>
+                    <li id="meat"><a href="#">М'ясні</a></li>
+                    <li id="pineapple"><a href="#">З ананасами</a></li>
+                    <li id="mushroom"><a href="#">З грибами</a></li>
+                    <li id="ocean"><a href="#">З морепродуктами</a></li>
+                    <li id="vega"><a href="#">Вега</a></li>
                 </ul>
             </div>
-            <div class="row list-pizzas">
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail pizza-card">
-                        <img src="assets/images/pizza_1.jpg">
-                        <div class="caption"><h3>Thumbnail label</h3>
-                            <div class="type">М'ясна піца</div>
-                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
-                                id elit non mi porta gravida
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 small-pizza">
-                                    <div>
-                                        <img  class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image" src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">99</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning btn-sm-pizza">Купити</a>
-                                </div>
-                                <div class="col-sm-6 big-pizza">
-                                    <div>
-                                        <img  class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image" src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">169</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning btn-big-pizza">Купити</a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail pizza-card">
-                        <img src="assets/images/pizza_2.jpg">
-                        <div class="caption"><h3>Thumbnail label</h3>
-                            <div class="type">М'ясна піца</div>
-                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
-                                id elit non mi porta
-                                gravida
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6 small-pizza">
-                                    <div>
-                                        <img  class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image" src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">99</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning">Купити</a>
-                                </div>
-                                <div class="col-sm-6 big-pizza">
-                                    <div>
-                                        <img class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image"   src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">169</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning">Купити</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4">
-                    <div class="thumbnail pizza-card">
-                        <img src="assets/images/pizza_3.jpg">
-                        <div class="caption"><h3>Thumbnail label</h3>
-                            <div class="type">М'ясна піца</div>
-                            <div class="ingredients">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec
-                                id elit non mi porta
-                                gravida
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-6 small-pizza">
-                                    <div>
-                                        <img  class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image" src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">99</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning">Купити</a>
-                                </div>
-                                <div class="col-sm-6 big-pizza">
-                                    <div>
-                                        <img  class="image" src="assets/images/size-icon.svg">
-                                        <span class="diam">40</span>
-                                    </div>
-                                    <div>
-                                        <img  class="image" src="assets/images/weight.svg">
-                                        <span class="weight">660</span>
-                                    </div>
-                                    <h3 class="costs">169</h3>
-                                    <div class="uah">грн.</div>
-                                    <a href="#" class="btn btn-warning">Купити</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="row" id="pizza_list">
             </div>
         </div>
-
         <div id="order">
             <div class="order-header">
                 <span class="order-title-header">Замовлення</span>
@@ -196,6 +74,34 @@
                     <div id="cat"></div>
                     Зголодніли?<br>Саме час замовити піцу!
                 </div>
+                <!--<div class="order-item">-->
+                    <!--<img class="img-pizza-in-basket" src="assets/images/pizza_1.jpg">-->
+                    <!--<span class="order-item-name">BBQ (Мала)</span>-->
+                    <!--<div class="options">-->
+                        <!--<span>-->
+                            <!--<img class="image" src="assets/images/size-icon.svg">-->
+                            <!--<span class="diam">40</span>-->
+                        <!--</span>-->
+                        <!--<span>-->
+                            <!--<img class="image" src="assets/images/weight.svg">-->
+                            <!--<span class="weight">660</span>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                    <!--<div class="amount-options">-->
+                        <!--<span class="item-cost">400</span>-->
+                        <!--грн.-->
+                        <!--<button class="btn btn-sm btn-danger less">-->
+                            <!--<span class="glyphicon glyphicon-minus"></span>-->
+                        <!--</button>-->
+                        <!--<span class="amount-of-items">1</span>-->
+                        <!--<button class="btn btn-sm btn-success more">-->
+                            <!--<span class="glyphicon glyphicon-plus"></span>-->
+                        <!--</button>-->
+                        <!--<button class="btn btn-sm btn-default remove">-->
+                            <!--<span class="glyphicon glyphicon-remove"></span>-->
+                        <!--</button>-->
+                    <!--</div>-->
+                <!--</div>-->
             </div>
             <div class="bottom-order">
                 <div class="order-cost">

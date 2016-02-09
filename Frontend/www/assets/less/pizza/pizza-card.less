@@ -1,34 +1,36 @@
 .pizza-card {
-  img {
+  .pizza-icon {
     width: 100%;
     max-width: 300px;
+    border-radius: 100%;
   }
 
   h3 {
     color: @mainColor;
-    background-color: lighten(@mainColor, 45%);
   }
-  .small-pizza {
-    float: left;
-    //margin-right: 10%;
+  //.small-pizza {
+  //  float: left;
+  //  //margin-right: 10%;
+  //}
+  //.big-pizza {
+  //  float: right;
+  //}
+  .description {
+    height: 60px;
+    overflow-y: hidden;
   }
-  .big-pizza {
-    float: right;
-  }
-  .image {
-    width: 10px;
-    height: 10px;
-  }
-  .diam {
-
-  }
-  .weight {
-
-
+  .uno {
+    margin-left: 25% ;
   }
   text-align: center;
   .type{
     color: grey;
     text-align: left;
+  }
+  .label {
+    position: absolute;
+    top: -5px;
+    right: 0px;
+    font-size: 19px;
   }
 }
