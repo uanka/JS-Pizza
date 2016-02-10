@@ -14,17 +14,18 @@
         </span>
     </div>
     <div class="amount-options">
-        <span class="item-cost"> <%= pizza[size].price %> грн.</span>
-        <button class="btn btn-sm btn-danger">
+        <span class="item-cost"><%= pizza[size].price %></span>
+            <span class="uah">грн.</span>
+        <button class="btn btn-sm btn-danger less">
             <span class="glyphicon glyphicon-minus"></span>
         </button>
         <span class="amount-of-items">
             <span class="quantity"><%= quantity %></span>
         </span>
-        <button class="btn btn-sm btn-success">
+        <button class="btn btn-sm btn-success more">
             <span class="glyphicon glyphicon-plus"></span>
         </button>
-        <button class="btn btn-sm btn-warning">
+        <button class="btn btn-sm btn-warning remove">
             <span class="glyphicon glyphicon-remove"></span>
         </button>
     </div>

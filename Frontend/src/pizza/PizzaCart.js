@@ -8,12 +8,11 @@ var PizzaSize = {
     Big: "big_size",
     Small: "small_size"
 };
-
 //Змінна в якій зберігаються перелік піц в кошику
 var Cart = [];
-
 //HTML едемент куди будуть додаватися піци
 var $cart = $("#basket");
+var empty = $cart.html();
 
 $("#order-reset").click(function(){
     Cart = [];
@@ -38,7 +37,6 @@ function addToCart(pizza, size) {
             quantity: 1
         });
     }
-    console.log(Cart);
     //Оновити вміст кошика на сторінці
     $(".order-amount").text(Cart.length);
     updateCart();
@@ -68,7 +66,7 @@ function getPizzaInCart() {
     return Cart;
 }
 
-function calculateAll(){
+function linkAll(){
     var res =0;
     for(var i= 0; i<Cart.length; ++i){
         res+=Cart[i].quantity;
@@ -88,7 +86,7 @@ function updateCart() {
 
     //Очищаємо старі піци в кошику
     $cart.html("");
-
+    var sum = 0;
     //Онволення однієї піци
     function showOnePizzaInCart(cart_item) {
         var html_code = Templates.PizzaCart_OneItem(cart_item);
@@ -96,7 +94,6 @@ function updateCart() {
         var $node = $(html_code);
 
         $node.find(".more").click(function(){
-            console.log(cart_item.quantity);
             more(cart_item);
         });
         $node.find(".less").click(function(){
@@ -108,21 +105,23 @@ function updateCart() {
             updateCart();
         });
         $node.find(".remove").click(function(){
-            console.log("tur");
             removeFromCart(cart_item);
             //Оновлюємо відображення
             //updateCart();
         });
-        $node.find(".quantity").text(cart_item.quantity);
+        var its = cart_item.quantity * parseInt($node.find(".item-cost").text());
+        sum+=its;
+        //$node.find(".quantity").text(cart_item.quantity);
         $cart.append($node);
     }
 
     Cart.forEach(showOnePizzaInCart);
-    $(".order-amount").text(calculateAll());
+    $(".order-amount").text(linkAll());
+    $(".money").text(sum);
 
     Storage.set('cart', Cart);
-    if(!Cart){
-        $(".empty-cart").show();
+    if(!Cart.length){
+        $cart.html(empty);
     }
 }
 
