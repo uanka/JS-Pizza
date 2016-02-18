@@ -1,5 +1,46 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 /**
+ * Created by chaika on 09.02.16.
+ */
+var API_URL = "http://localhost:5050";
+
+function backendGet(url, callback) {
+    $.ajax({
+        url: API_URL + url,
+        type: 'GET',
+        success: function(data){
+            callback(null, data);
+        },
+        fail: function() {
+            callback(new Error("Ajax Failed"));
+        }
+    })
+}
+
+function backendPost(url, data, callback) {
+    $.ajax({
+        url: API_URL + url,
+        type: 'POST',
+        contentType : 'application/json',
+        data: JSON.stringify(data),
+        success: function(data){
+            callback(null, data);
+        },
+        fail: function() {
+            callback(new Error("Ajax Failed"));
+        }
+    })
+}
+
+exports.getPizzaList = function(callback) {
+    backendGet("/api/get-pizza-list/", callback);
+};
+
+exports.createOrder = function(order_info, callback) {
+    backendPost("/api/create-order/", order_info, callback);
+};
+},{}],2:[function(require,module,exports){
+/**
  * Created by diana on 12.01.16.
  */
 
@@ -177,7 +218,7 @@ var pizza_info = [
 ];
 
 module.exports = pizza_info;
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /**
  * Created by Земляничка on 03.02.2016.
  */
@@ -189,7 +230,7 @@ exports.get =	function(key)	{
 exports.set =	function(key,	value)	{
     return	basil.set(key,	value);
 };
-},{"basil.js":7}],3:[function(require,module,exports){
+},{"basil.js":9}],4:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -201,7 +242,24 @@ exports.PizzaMenu_OneItem = ejs.compile("<%\nfunction getIngredientsArray(pizza)
 
 exports.PizzaCart_OneItem = ejs.compile("<div class=\"order-item\">\n    <img class=\"img-pizza-in-basket\" src=\"assets/images/pizza_1.jpg\">\n    <span class=\"order-item-name\">\n         <%= pizza.title %> (<% if(size==\"big_size\") { %> <%= \"Велика\" %> <% }if(size == \"small_size\"){%> <%= \"Мала\"%> <%}%>)\n    </span>\n    <div class=\"options\">\n        <span>\n            <img class=\"image\" src=\"assets/images/size-icon.svg\">\n            <span class=\"diam\"><%= pizza[size].size %></span>\n        </span>\n        <span>\n            <img class=\"image\" src=\"assets/images/weight.svg\">\n            <span class=\"weight\"><%= pizza[size].weight %></span>\n        </span>\n    </div>\n    <div class=\"amount-options\">\n        <span class=\"item-cost\"><%= pizza[size].price %></span>\n            <span class=\"uah\">грн.</span>\n        <button class=\"btn btn-sm btn-danger less\">\n            <span class=\"glyphicon glyphicon-minus\"></span>\n        </button>\n        <span class=\"amount-of-items\">\n            <span class=\"quantity\"><%= quantity %></span>\n        </span>\n        <button class=\"btn btn-sm btn-success more\">\n            <span class=\"glyphicon glyphicon-plus\"></span>\n        </button>\n        <button class=\"btn btn-sm btn-warning remove\">\n            <span class=\"glyphicon glyphicon-remove\"></span>\n        </button>\n    </div>\n</div>");
 
-},{"ejs":8}],4:[function(require,module,exports){
+},{"ejs":10}],5:[function(require,module,exports){
+/**
+ * Created by Земляничка on 17.02.2016.
+ */
+function initialize() {
+//Тут починаємо працювати з картою
+    var mapProp = {
+          center: new google.maps.LatLng(50.464379,30.519131),
+          zoom: 11
+      };
+    var html_element = document.getElementById("googleMap");
+    var map = new google.maps.Map(html_element, mapProp);
+//Карта створена і показана
+}
+//Коли сторінка завантажилась
+google.maps.event.addDomListener(window, 'load', initialize);
+
+},{}],6:[function(require,module,exports){
 /**
  * Created by chaika on 25.01.16.
  */
@@ -212,17 +270,65 @@ $(function(){
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
 
-    PizzaCart.initialiseCart();
-    PizzaMenu.initialiseMenu();
+    var API = require('./API');
+
+    //PizzaCart.initialiseCart();
+    //PizzaMenu.initialiseMenu(Pizza_List);
+
+    API.getPizzaList(function(err, pizza_list){
+        if(err){
+            return console.error(err);
+        }
+        PizzaCart.initialiseCart();
+        PizzaMenu.initialiseMenu(pizza_list);
+    });
+
+    $('.to-buy').click (function(){
+            //if (err) {
+            //    alert("cant");
+            //}
+            //else {
+                window.location = "/order.html";
+            //}
+    });
+
+    $("#next").click (function() {
+        API.createOrder({
+            name: "An",
+            phone: 98,
+            pizza: PizzaCart.getPizzaInCart()
+        }, function (err, res) {
+            if (err) {
+                alert("cant");
+            }
+            else {
+                LiqPayCheckout.init({
+                    data: res.data,
+                    signature: res.signature,
+                    embedTo: "#liqpay",
+                    mode: "popup"// embed || popup
+                }).on("liqpay.callback", function (data) {
+                    console.log(data.status);
+                    console.log(data);
+                }).on("liqpay.ready",
+                    function (data) {
+                        // ready
+                    }).on("liqpay.close", function (data) {
+                    // close
+                });
+            }
 
 
+        });
+    });
+    require('./googleMap');
 });
-},{"./Pizza_List":1,"./pizza/PizzaCart":5,"./pizza/PizzaMenu":6}],5:[function(require,module,exports){
+},{"./API":1,"./Pizza_List":2,"./googleMap":5,"./pizza/PizzaCart":7,"./pizza/PizzaMenu":8}],7:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
 var Templates = require('../Templates');
-var Storage = require('../Storage')
+var Storage = require('../Storage');
 //Перелік розмірів піци
 var PizzaSize = {
     Big: "big_size",
@@ -352,7 +458,7 @@ exports.getPizzaInCart = getPizzaInCart;
 exports.initialiseCart = initialiseCart;
 
 exports.PizzaSize = PizzaSize;
-},{"../Storage":2,"../Templates":3}],6:[function(require,module,exports){
+},{"../Storage":3,"../Templates":4}],8:[function(require,module,exports){
 /**
  * Created by chaika on 02.02.16.
  */
@@ -414,8 +520,9 @@ function filterPizza(filter) {
     showPizzaList(pizza_shown);
 }
 
-function initialiseMenu() {
+function initialiseMenu(pizza_list) {
     //Показуємо усі піци
+    Pizza_List = pizza_list;
     showPizzaList(Pizza_List)
 }
 
@@ -431,9 +538,11 @@ $("li").each(function (i, item) {
     })
 });
 
+
+
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;
-},{"../Pizza_List":1,"../Templates":3,"./PizzaCart":5}],7:[function(require,module,exports){
+},{"../Pizza_List":2,"../Templates":4,"./PizzaCart":7}],9:[function(require,module,exports){
 (function () {
 	// Basil
 	var Basil = function (options) {
@@ -802,7 +911,7 @@ exports.initialiseMenu = initialiseMenu;
 
 })();
 
-},{}],8:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1553,7 +1662,7 @@ if (typeof window != 'undefined') {
   window.ejs = exports;
 }
 
-},{"../package.json":10,"./utils":9,"fs":11,"path":12}],9:[function(require,module,exports){
+},{"../package.json":12,"./utils":11,"fs":13,"path":14}],11:[function(require,module,exports){
 /*
  * EJS Embedded JavaScript templates
  * Copyright 2112 Matthew Eernisse (mde@fleegix.org)
@@ -1696,7 +1805,7 @@ exports.cache = {
 };
 
 
-},{}],10:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 module.exports={
   "name": "ejs",
   "description": "Embedded JavaScript templates",
@@ -1775,9 +1884,9 @@ module.exports={
   "directories": {}
 }
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 
-},{}],12:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -2005,7 +2114,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require('_process'))
-},{"_process":13}],13:[function(require,module,exports){
+},{"_process":15}],15:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -2098,4 +2207,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[4]);
+},{}]},{},[6]);

@@ -59,8 +59,9 @@ function filterPizza(filter) {
     showPizzaList(pizza_shown);
 }
 
-function initialiseMenu() {
+function initialiseMenu(pizza_list) {
     //Показуємо усі піци
+    Pizza_List = pizza_list;
     showPizzaList(Pizza_List)
 }
 
@@ -75,6 +76,8 @@ $("li").each(function (i, item) {
         item.addClass("active");
     })
 });
+
+
 
 exports.filterPizza = filterPizza;
 exports.initialiseMenu = initialiseMenu;

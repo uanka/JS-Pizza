@@ -1,0 +1,40 @@
+<% include common/header.ejs %>
+<div class="container-fluid page">
+    <div class="row">
+        <div class="main-pizzas">
+            <div id="all-pizzas-words">
+                <h2 class="words-allp">Усі піци
+                    <span class="badge badge-all">8</span></h2>
+            </div>
+            <div class="filters">
+                <ul class="nav nav-pills">
+                    <li id="all" class="active"><a href="#">Усі</a></li>
+                    <li id="meat"><a href="#">М'ясні</a></li>
+                    <li id="pineapple"><a href="#">З ананасами</a></li>
+                    <li id="mushroom"><a href="#">З грибами</a></li>
+                    <li id="ocean"><a href="#">З морепродуктами</a></li>
+                    <li id="vega"><a href="#">Вега</a></li>
+                </ul>
+            </div>
+            <div class="row" id="pizza_list">
+            </div>
+        </div>
+        <% include common/order.ejs %>
+    </div>
+</div>
+<!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--Own JavaScript -->
+<script type="text/javascript" src="assets/js/main.js"></script><!-- jQuery JavaScript -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<!--Bootsrap JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<!--Own JavaScript -->
+<script type="text/javascript" src="assets/js/main.js"></script>
+<% include common/footer.ejs %>
