@@ -3,7 +3,7 @@
     <div class="row">
         <div class="form-order">
             <div class="form-description-1">
-               <h3> 1. Контактні дані</h3>
+                <h3> 1. Контактні дані</h3>
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -14,7 +14,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" id="input-name" placeholder="Прізвище Ім'я">
                             </div>
-                            <span class="name-help-block" style="display:none">
+                            <span class="name-help-block danger" style="display:none">
                                 Ім'я має складатися лише з літер
                             </span>
                         </div>
@@ -24,7 +24,7 @@
                             <div class="col-sm-10">
                                 <input class="form-control" type="text" id="input-phone" placeholder="+380994010999">
                             </div>
-                            <span class="phone-help-block" style="display:none">
+                            <span class="phone-help-block danger" style="display:none">
                                 Номер має складатися лише з цифр, і починатися з +380 або 0
                             </span>
                         </div>
@@ -35,22 +35,28 @@
                                 <input class="form-control" type="text" id="input-adress"
                                        placeholder="Київ, вул. Спаська, 2">
                             </div>
-                            <span class="address-help-block" style="display:none">
+                            <span class="address-help-block danger" style="display:none">
                                 Введіть адресу доставки піци
                             </span>
                         </div>
                     </form>
                 </div>
-                <div class="col-md-5 order-summary">
+                <div class="col-md-5 order-sum">
                     <div class=" bs-callout bs-callout-warning">
                         <h4>Інформація про замовлення</h4>
 
-                        <p class="order-summery-time">
-                            <b>Приблизний час доставки:</b> невідомий
+                        <p class="order-sum-time">
+                            <b>Приблизний час доставки:</b>
+                            <span id="order-sum-time">
+                                невідомий
+                            </span>
                         </p>
 
-                        <p class="order-summery-adress">
-                            <b>Адреса доставки:</b> невідома
+                        <p class="order-sum-adress">
+                            <b>Адреса доставки:</b>
+                            <span id="order-sum-adress">
+                                невідома
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -60,10 +66,11 @@
         <% include common/order.ejs %>
     </div>
 </div>
-<button id="next"></button>
+<div><button id="next" class="btn btn-warning btn-big">Далі
+    <span class="glyphicon glyphicon-chevron-right"></span>
+</button></div>
 <div id="googleMap"></div>
 <!-- місце для віджету -->
-
 <div id="liqpay"></div>
 <!-- піключаємо скрипт -->
 <script src="//static.liqpay.com/libjs/checkout.js">

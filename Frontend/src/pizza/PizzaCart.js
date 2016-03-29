@@ -20,6 +20,23 @@ $("#order-reset").click(function(){
     updateCart()
 });
 
+$('.to-buy').click (function(){
+    if ($('.order-amount').text() !== '0' && window.location!=="/order.html") {
+        window.location = "/order.html";
+        $('.to-but').hide();
+        $('.to-change').show();
+        $('.amount-options').addClass('orderpage');
+    }
+    else if($('.order-amount').text() === '0'){
+        $('.to-buy').off();
+    }
+});
+$('.to-change').click(function(){
+    window.location = "/";
+    $('.to-change').hide();
+    $('.to-buy').show();
+    $('.amount-options').removeClass('orderpage');
+});
 function addToCart(pizza, size) {
     //Додавання однієї піци в кошик покупок
     var is = 0;
@@ -38,6 +55,7 @@ function addToCart(pizza, size) {
         });
     }
     //Оновити вміст кошика на сторінці
+    $(".to-buy").on();
     $(".order-amount").text(Cart.length);
     updateCart();
 }
