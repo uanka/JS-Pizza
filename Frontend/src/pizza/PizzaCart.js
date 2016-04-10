@@ -25,7 +25,7 @@ $('.to-buy').click (function(){
         window.location = "/order.html";
         $('.to-but').hide();
         $('.to-change').show();
-        $('.amount-options').addClass('orderpage');
+        $('#basket').addClass('orderpage');
     }
     else if($('.order-amount').text() === '0'){
         $('.to-buy').off();
@@ -99,6 +99,7 @@ function more(item){
 }
 
 function updateCart() {
+
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 

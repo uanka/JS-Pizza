@@ -282,12 +282,24 @@ function initialize() {
                 console.log(adress);
                 $('#input-adress').val(adress);
                 $('#order-sum-adress').html(adress);
-                home_marker.setPosition(coordinates);
-
-                calculateRoute(point, coordinates, function (err, length) {
-                    //console.log(length.duration);
-                    $("#order-sum-time").html(length.duration.text);
+                if($('.address-group').hasClass("has-error"))
+                    $('.address-group').removeClass("has-error");
+                $('.address-group').addClass("has-success");
+                geocodeAddress(adress, function(err, coordinates){
+                    if (!err) {
+                        home_marker.setPosition(coordinates);
+                        calculateRoute(point, coordinates, function(err, length){
+                            //console.log(length.duration);
+                            $("#order-sum-time").html(length.duration.text);
+                        });
+                    }
                 });
+                //home_marker.setPosition(coordinates);
+                //
+                //calculateRoute(point, coordinates, function (err, length) {
+                //    //console.log(length.duration);
+                //    $("#order-sum-time").html(length.duration.text);
+                //});
             } else {
                 console.log("Немає адреси")
             }
@@ -310,20 +322,50 @@ function initialize() {
     }
 
 
-    function geocodeAddress(adress, callback) {
+    function geocodeAddress(address, callback) {
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'address': address}, function (results, status) {
             if (status === google.maps.GeocoderStatus.OK && results[0]) {
                 var coordinates = results[0].geometry.location;
                 callback(null, coordinates);
             } else {
-                callback(new Error("Can not find the adress"));
+                callback(new Error("Can not find the address"));
             }
         });
     }
-
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+    //address-group
+    $('#input-adress').keyup(function () {
+        delay(function () {
+            geocodeAddress($('#input-adress').val(), function (err, coordinates) {
+                if (!err) {
+                    $('#order-sum-adress').html($('#input-adress').val());
+                    if($('.address-group').hasClass("has-error"))
+                        $('.address-group').removeClass("has-error");
+                    $('.address-group').addClass("has-success");
+                    calculateRoute(point, coordinates);
+                } else {
+                    $('.address-group').addClass("has-error");
+                    console.log("Немає адреси");
+                }
+            });
+        }, 3000);
+    });
+    //$('#input-adress').focusout(function(){
+    //    geocodeAddress($('#input-adress').val(), function () {
+    //        console.log(this);
+    //    });
+    //});
     function calculateRoute(A_latlng, B_latlng, callback) {
         var directionService = new google.maps.DirectionsService();
+       // var directionsDisplay = new google.maps.DirectionsRenderer();
+        directionsDisplay.setMap(map);
         directionService.route({
             origin: A_latlng,
             destination: B_latlng,
@@ -331,12 +373,13 @@ function initialize() {
         }, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 var leg = response.routes[0].legs[0];
-                //  directionsDisplay.setDirections(response);
+                directionsDisplay.setDirections(response);
                 console.log(leg.duration);
-                callback(null, {duration: leg.duration});
-
+               // callback(null, {duration: leg.duration});
+                $("#order-sum-time").html(leg.duration.text);
             } else {
-                callback(new Error("Can' not find direction"));
+                $('.address-group').addClass("has-error");
+                console.log(new Error("Cannot find direction"));
             }
         });
     }
@@ -354,7 +397,7 @@ $(function(){
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
-    var validated = require('./validation');
+    require('./validation');
     var API = require('./API');
 
     //PizzaCart.initialiseCart();
@@ -368,15 +411,20 @@ $(function(){
         PizzaMenu.initialiseMenu(pizza_list);
     });
 
-
+    function validated(){
+        return $(".name").hasClass("has-success")&&
+        $(".phone-group").hasClass("has-success")&&
+        $(".address-group").hasClass("has-success");
+    }
 
     $("#next").click (function() {
-        if(validated) {
+        if(validated()) {
             API.createOrder({
                 name: $("#input-name").val(),
                 phone: $("#input-phone").val(),
                 adress: $("#input-adress").val(),
-                pizza: PizzaCart.getPizzaInCart()
+                pizza: PizzaCart.getPizzaInCart(),
+                price: $(".money").text()
             }, function (err, res) {
                 if (err) {
                     alert("Can't create the order");
@@ -434,7 +482,7 @@ $('.to-buy').click (function(){
         window.location = "/order.html";
         $('.to-but').hide();
         $('.to-change').show();
-        $('.amount-options').addClass('orderpage');
+        $('#basket').addClass('orderpage');
     }
     else if($('.order-amount').text() === '0'){
         $('.to-buy').off();
@@ -508,6 +556,7 @@ function more(item){
 }
 
 function updateCart() {
+
     //Функція викликається при зміні вмісту кошика
     //Тут можна наприклад показати оновлений кошик на екрані та зберегти вміт кошика в Local Storage
 
@@ -703,29 +752,17 @@ $('#input-phone').keyup(function () {
     }, 3000);
 });
 
-//address-group
-$('#input-adress').keyup(function () {
-    delay(function () {
-        GoogleMap.geocodeAddress($('#input-adress').val(), function (err, coordinates) {
-            if (!err) {
-                $(".order-sum-adress").html($('#input-adress').val());
-                $('.address-group').addClass('has-success');
-                GoogleMap.calculateRoute(GoogleMap.pointPizza, coordinates);
-            } else {
-                console.log("Немає адреси");
-            }
-        });
-    }, 3000);
-});
+
 
 //all together
-exports.validated = function(){
-    $(".form-group").each(function(i, item){
-        if(!$(item).hasClass('has-success'))
-        return false;
-    });
-    return true;
-};
+//exports.validated = function(){
+//    $(".form-group").each(function(i, item){
+//        console.log($(item).hasClass('has-success'));
+//        if(!$(item).hasClass('has-success'))
+//           return false;
+//    });
+//    return true;
+//};
 },{}],10:[function(require,module,exports){
 (function () {
 	// Basil

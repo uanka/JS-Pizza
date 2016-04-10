@@ -57,26 +57,14 @@ $('#input-phone').keyup(function () {
     }, 3000);
 });
 
-//address-group
-$('#input-adress').keyup(function () {
-    delay(function () {
-        GoogleMap.geocodeAddress($('#input-adress').val(), function (err, coordinates) {
-            if (!err) {
-                $(".order-sum-adress").html($('#input-adress').val());
-                $('.address-group').addClass('has-success');
-                GoogleMap.calculateRoute(GoogleMap.pointPizza, coordinates);
-            } else {
-                console.log("Немає адреси");
-            }
-        });
-    }, 3000);
-});
+
 
 //all together
-exports.validated = function(){
-    $(".form-group").each(function(i, item){
-        if(!$(item).hasClass('has-success'))
-        return false;
-    });
-    return true;
-};
+//exports.validated = function(){
+//    $(".form-group").each(function(i, item){
+//        console.log($(item).hasClass('has-success'));
+//        if(!$(item).hasClass('has-success'))
+//           return false;
+//    });
+//    return true;
+//};

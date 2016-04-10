@@ -20,14 +20,16 @@ function sha1(string) {
 
 exports.createOrder = function(req, res) {
     var order_info = req.body;
+    console.log(order_info);
     var order_items = "Order: ";
     console.log("Creating Order", order_info);
     order_info.pizza.forEach(function(cart_item){
         var size;
         if(cart_item.size ==="big_size")  size = "(B)";
         else  size = "(M)";
-        order_items += cart_item.pizza.title + size + "*"+cart_item.pizza.quantity+", ";
+        order_items += cart_item.pizza.title + size + "*"+cart_item.quantity+", ";
     });
+    console.log(order_items);
     var order_description = order_info.name+"("+order_info.phone+"," + order_info.adress+") "+order_items;
     var LIQPAY_PUBLIC_KEY = "i35565441927";
     var LIQPAY_PRIVATE_KEY = "rB4u8bHChJmIL7UAxPcWWzSwVEvtGLwSXiY5YT0l";

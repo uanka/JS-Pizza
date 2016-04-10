@@ -7,7 +7,7 @@ $(function(){
     var PizzaMenu = require('./pizza/PizzaMenu');
     var PizzaCart = require('./pizza/PizzaCart');
     var Pizza_List = require('./Pizza_List');
-    var validated = require('./validation');
+    require('./validation');
     var API = require('./API');
 
     //PizzaCart.initialiseCart();
@@ -21,15 +21,20 @@ $(function(){
         PizzaMenu.initialiseMenu(pizza_list);
     });
 
-
+    function validated(){
+        return $(".name").hasClass("has-success")&&
+        $(".phone-group").hasClass("has-success")&&
+        $(".address-group").hasClass("has-success");
+    }
 
     $("#next").click (function() {
-        if(validated) {
+        if(validated()) {
             API.createOrder({
                 name: $("#input-name").val(),
                 phone: $("#input-phone").val(),
                 adress: $("#input-adress").val(),
-                pizza: PizzaCart.getPizzaInCart()
+                pizza: PizzaCart.getPizzaInCart(),
+                price: $(".money").text()
             }, function (err, res) {
                 if (err) {
                     alert("Can't create the order");
