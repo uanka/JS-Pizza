@@ -20,9 +20,9 @@ function sha1(string) {
 
 exports.createOrder = function(req, res) {
     var order_info = req.body;
-    console.log(order_info);
+    //console.log(order_info);
     var order_items = "Order: ";
-    console.log("Creating Order", order_info);
+    //console.log("Creating Order", order_info);
     order_info.pizza.forEach(function(cart_item){
         var size;
         if(cart_item.size ==="big_size")  size = "(B)";

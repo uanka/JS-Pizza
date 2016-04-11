@@ -96,11 +96,25 @@
   .order-cost{
     font-size: 20px;
     padding: 5px;
-    margin:auto;
+    margin: auto;
   }
 }
-.orderpage .amount-options{
-  button {
+.to-change{
+  display: none;
+}
+.orderpage {
+  .amount-options{
+    button {
+      display: none;
+    }
+  }
+  .to-buy {
+    display: none;
+  }
+  .to-change {
+    display: inline-block;
+  }
+  #order-reset {
     display: none;
   }
 }

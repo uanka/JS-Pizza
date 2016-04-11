@@ -17,18 +17,17 @@ var empty = $cart.html();
 $("#order-reset").click(function(){
     Cart = [];
     Storage.set('cart', Cart);
-    updateCart()
+    updateCart();
 });
 
 $('.to-buy').click (function(){
-    if ($('.order-amount').text() !== '0' && window.location!=="/order.html") {
-        window.location = "/order.html";
-        $('.to-but').hide();
-        $('.to-change').show();
-        $('#basket').addClass('orderpage');
+
+    if($('.order-amount').text() === '0'){
+        //$('.to-buy').off();
     }
-    else if($('.order-amount').text() === '0'){
-        $('.to-buy').off();
+    //else if (window.location!=="/order.html") {
+    else{
+        window.location = "/order.html";
     }
 });
 $('.to-change').click(function(){
@@ -55,8 +54,9 @@ function addToCart(pizza, size) {
         });
     }
     //Оновити вміст кошика на сторінці
-    $(".to-buy").on();
+
     $(".order-amount").text(Cart.length);
+    //$(".to-buy").on();
     updateCart();
 }
 
@@ -128,8 +128,7 @@ function updateCart() {
             //Оновлюємо відображення
             //updateCart();
         });
-        var its = cart_item.quantity * parseInt($node.find(".item-cost").text());
-        sum+=its;
+        sum += cart_item.quantity * parseInt($node.find(".item-cost").text());
         //$node.find(".quantity").text(cart_item.quantity);
         $cart.append($node);
     }
